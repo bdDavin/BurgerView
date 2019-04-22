@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		362055C6F580EFF045EEEEA3 /* Pods_BurgerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CB623B563E08F5C432E596F /* Pods_BurgerView.framework */; };
 		74970010226DE1F100841C81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7497000F226DE1F100841C81 /* AppDelegate.swift */; };
 		74970012226DE1F100841C81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74970011226DE1F100841C81 /* ViewController.swift */; };
 		74970015226DE1F100841C81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74970013226DE1F100841C81 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CB623B563E08F5C432E596F /* Pods_BurgerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BurgerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7497000C226DE1F100841C81 /* BurgerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BurgerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7497000F226DE1F100841C81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74970011226DE1F100841C81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +26,8 @@
 		74970019226DE1F700841C81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7497001C226DE1F700841C81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7497001E226DE1F700841C81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F803B1E0C62CBBDD1810EE0 /* Pods-BurgerView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurgerView.release.xcconfig"; path = "Target Support Files/Pods-BurgerView/Pods-BurgerView.release.xcconfig"; sourceTree = "<group>"; };
+		EB4A69E8ECF2C875F13A50CF /* Pods-BurgerView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurgerView.debug.xcconfig"; path = "Target Support Files/Pods-BurgerView/Pods-BurgerView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				362055C6F580EFF045EEEEA3 /* Pods_BurgerView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				7497000E226DE1F100841C81 /* BurgerView */,
 				7497000D226DE1F100841C81 /* Products */,
+				C579A0D5409CE4E71B584AB8 /* Pods */,
+				F962AC066CEC37DB3B95F8A6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,6 +98,24 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		C579A0D5409CE4E71B584AB8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EB4A69E8ECF2C875F13A50CF /* Pods-BurgerView.debug.xcconfig */,
+				9F803B1E0C62CBBDD1810EE0 /* Pods-BurgerView.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F962AC066CEC37DB3B95F8A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0CB623B563E08F5C432E596F /* Pods_BurgerView.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -98,9 +123,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 74970021226DE1F700841C81 /* Build configuration list for PBXNativeTarget "BurgerView" */;
 			buildPhases = (
+				85A6EFFC3618DE0515FA6879 /* [CP] Check Pods Manifest.lock */,
 				74970008226DE1F100841C81 /* Sources */,
 				74970009226DE1F100841C81 /* Frameworks */,
 				7497000A226DE1F100841C81 /* Resources */,
+				DF7BC4A4F6E89BDFCFC8AFF5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -156,6 +183,69 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		85A6EFFC3618DE0515FA6879 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BurgerView-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF7BC4A4F6E89BDFCFC8AFF5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BurgerView/Pods-BurgerView-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BurgerView/Pods-BurgerView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		74970008226DE1F100841C81 /* Sources */ = {
@@ -308,6 +398,7 @@
 		};
 		74970022226DE1F700841C81 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB4A69E8ECF2C875F13A50CF /* Pods-BurgerView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -326,6 +417,7 @@
 		};
 		74970023226DE1F700841C81 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F803B1E0C62CBBDD1810EE0 /* Pods-BurgerView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
