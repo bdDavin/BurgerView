@@ -10,6 +10,6 @@ target 'BurgerView' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
 
-  pod 'IQKeyboardManagerSwift'
+  pod 'StarReview'
 
 end

@@ -20,6 +20,8 @@
 		745B5C02226F301A00A05E0F /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745B5C01226F301A00A05E0F /* ReviewCell.swift */; };
 		745B5C04226F3D6300A05E0F /* ReviewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745B5C03226F3D6300A05E0F /* ReviewsVC.swift */; };
 		745B5C06226F86E800A05E0F /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745B5C05226F86E800A05E0F /* Review.swift */; };
+		745B5C08227059F900A05E0F /* CreateReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745B5C07227059F900A05E0F /* CreateReviewVC.swift */; };
+		745B5C0A22705DF400A05E0F /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745B5C0922705DF400A05E0F /* CosmosDistrib.swift */; };
 		74970010226DE1F100841C81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7497000F226DE1F100841C81 /* AppDelegate.swift */; };
 		74970018226DE1F100841C81 /* BurgerView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 74970016226DE1F100841C81 /* BurgerView.xcdatamodeld */; };
 		7497001A226DE1F700841C81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74970019226DE1F700841C81 /* Assets.xcassets */; };
@@ -40,6 +42,8 @@
 		745B5C01226F301A00A05E0F /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		745B5C03226F3D6300A05E0F /* ReviewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsVC.swift; sourceTree = "<group>"; };
 		745B5C05226F86E800A05E0F /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		745B5C07227059F900A05E0F /* CreateReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReviewVC.swift; sourceTree = "<group>"; };
+		745B5C0922705DF400A05E0F /* CosmosDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
 		7497000C226DE1F100841C81 /* BurgerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BurgerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7497000F226DE1F100841C81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74970017226DE1F100841C81 /* BurgerView.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BurgerView.xcdatamodel; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 				74970024226DE23900841C81 /* Controllers */,
 				7497000F226DE1F100841C81 /* AppDelegate.swift */,
 				74970019226DE1F700841C81 /* Assets.xcassets */,
+				745B5C0922705DF400A05E0F /* CosmosDistrib.swift */,
 				7497001E226DE1F700841C81 /* Info.plist */,
 				74970016226DE1F100841C81 /* BurgerView.xcdatamodeld */,
 			);
@@ -106,6 +111,7 @@
 				745B5BFF226F235000A05E0F /* ProfileVC.swift */,
 				74151009226DEB4B00604029 /* MapVC.swift */,
 				7415100B226DEB5400604029 /* GoogleService-Info.plist */,
+				745B5C07227059F900A05E0F /* CreateReviewVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -249,8 +255,8 @@
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/StarReview/StarReview.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -263,8 +269,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StarReview.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -282,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				745B5C08227059F900A05E0F /* CreateReviewVC.swift in Sources */,
 				74970018226DE1F100841C81 /* BurgerView.xcdatamodeld in Sources */,
 				745B5C02226F301A00A05E0F /* ReviewCell.swift in Sources */,
 				74151006226DEB2300604029 /* OnboardingVC.swift in Sources */,
@@ -292,6 +299,7 @@
 				745B5C04226F3D6300A05E0F /* ReviewsVC.swift in Sources */,
 				74151005226DEB2300604029 /* CreateEmailVC.swift in Sources */,
 				7415100A226DEB4B00604029 /* MapVC.swift in Sources */,
+				745B5C0A22705DF400A05E0F /* CosmosDistrib.swift in Sources */,
 				74151004226DEB2300604029 /* LoginVC.swift in Sources */,
 				74970010226DE1F100841C81 /* AppDelegate.swift in Sources */,
 			);
