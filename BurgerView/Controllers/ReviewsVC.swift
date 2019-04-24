@@ -66,18 +66,4 @@ class ReviewsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         
         return cell
     }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        UIView.animate(withDuration: 1) {
-            //let height = reviewsTableView.layer.frame.height
-            self.reviewsTableView.layer.position.y = CGFloat(integerLiteral: 40)
-        }
-    }
-    
-    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
-        
-    }
-    
-    
-    
 }
