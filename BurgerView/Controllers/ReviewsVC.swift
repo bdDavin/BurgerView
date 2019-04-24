@@ -37,8 +37,13 @@ class ReviewsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destVC = segue.destination as! CreateReviewVC
+        destVC.burgerJoint = burgerItem
+    }
+    
     @IBAction func backPressed(_ sender: UIButton) {
-        
+        self.dismiss(animated: true, completion: nil)
     }
     
     //MARK: - PickerView

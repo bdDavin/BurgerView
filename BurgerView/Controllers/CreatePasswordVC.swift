@@ -29,6 +29,11 @@ class CreatePasswordVC: UIViewController {
         let password = passwordTextField.text!
         
         auth.createUser(withEmail: email, password: password) { authResult, error in
+            let changeRequest = self.auth.currentUser?.createProfileChangeRequest()
+            changeRequest?.displayName = "\(self.firstName) \(self.lastName)"
+            changeRequest?.commitChanges { (error) in
+                print(error.debugDescription)
+            }
             self.performSegue(withIdentifier: "goToMain", sender: nil)
         }
     }

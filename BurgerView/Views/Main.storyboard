@@ -647,9 +647,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bxp-jZ-Mny">
-                                <rect key="frame" x="20" y="236" width="374" height="62"/>
+                                <rect key="frame" x="20" y="207" width="374" height="91"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="62" id="VNd-do-PXh"/>
+                                    <constraint firstAttribute="height" constant="91" id="6jf-Gt-ASc"/>
                                 </constraints>
                             </pickerView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Burger name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oCd-uS-rWh">
@@ -661,12 +661,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.97647058819999999" green="0.92941176469999998" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Bxp-jZ-Mny" firstAttribute="top" secondItem="jPf-5D-kzR" secondAttribute="bottom" constant="8" id="1gX-yC-Sac"/>
                             <constraint firstItem="eER-K7-v3I" firstAttribute="trailing" secondItem="Qnz-y5-git" secondAttribute="trailing" constant="132" id="1lE-2f-pyZ"/>
                             <constraint firstItem="9zN-rl-7p9" firstAttribute="leading" secondItem="eER-K7-v3I" secondAttribute="leading" constant="112" id="4XN-Tf-tOS"/>
                             <constraint firstItem="dV7-DM-AKL" firstAttribute="top" secondItem="fu5-3v-qYJ" secondAttribute="bottom" constant="8" id="6b6-eI-3Yd"/>
                             <constraint firstItem="fu5-3v-qYJ" firstAttribute="leading" secondItem="eER-K7-v3I" secondAttribute="leading" constant="20" id="7KN-Pv-QEV"/>
                             <constraint firstItem="Qnz-y5-git" firstAttribute="top" secondItem="vqV-0c-tRL" secondAttribute="bottom" constant="8" id="CRt-oC-fle"/>
+                            <constraint firstItem="Bxp-jZ-Mny" firstAttribute="top" secondItem="Qnz-y5-git" secondAttribute="bottom" constant="8" id="HLe-RY-C3D"/>
                             <constraint firstItem="eER-K7-v3I" firstAttribute="trailing" secondItem="vqV-0c-tRL" secondAttribute="trailing" constant="155" id="KPx-Uf-sTq"/>
                             <constraint firstItem="vqV-0c-tRL" firstAttribute="leading" secondItem="eER-K7-v3I" secondAttribute="leading" constant="156" id="RGP-ax-bQU"/>
                             <constraint firstItem="eER-K7-v3I" firstAttribute="trailing" secondItem="9zN-rl-7p9" secondAttribute="trailing" constant="112" id="azU-cK-a8R"/>
@@ -691,6 +691,7 @@
                     <connections>
                         <outlet property="burgerImageView" destination="Qnz-y5-git" id="NtI-G6-KER"/>
                         <outlet property="burgerNameInput" destination="oCd-uS-rWh" id="XEi-1T-zXt"/>
+                        <outlet property="burgerPickerView" destination="Bxp-jZ-Mny" id="nKb-xR-Ygn"/>
                         <outlet property="descriptionInput" destination="fu5-3v-qYJ" id="WCN-CQ-HNp"/>
                         <outlet property="starRatingView" destination="dV7-DM-AKL" id="UV6-Mj-QTs"/>
                     </connections>
