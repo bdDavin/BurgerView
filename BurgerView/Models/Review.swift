@@ -13,7 +13,7 @@ class Review {
     var burgerName = ""
     var description = ""
     var rating = 0
-    var image = false
+    var imagePath = ""
     
     init(data:[String:Any]) {
         if let user = data["user"] as? String {
@@ -28,8 +28,8 @@ class Review {
         if let rating = data["rating"] as? Int {
             self.rating = rating
         }
-        if let image = data["image"] as? Bool {
-            self.image = image
+        if let imagePath = data["imagePath"] as? String {
+            self.imagePath = imagePath
         }
     }
     

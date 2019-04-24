@@ -11,5 +11,6 @@ target 'BurgerView' do
   pod 'Firebase/Storage'
 
   pod 'StarReview'
+  pod 'CameraManager'
 
 end

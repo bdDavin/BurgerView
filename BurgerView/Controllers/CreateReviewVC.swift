@@ -9,9 +9,10 @@
 import UIKit
 import Firebase
 import MapKit
+import CameraManager
 
-class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
+class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, CameraDelegate {
+    
     @IBOutlet weak var burgerPickerView: UIPickerView!
     @IBOutlet weak var burgerImageView: UIImageView!
     @IBOutlet weak var burgerNameInput: UITextField!
@@ -20,8 +21,11 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     let auth = Auth.auth()
     let db = Firestore.firestore()
+    let storage = Storage.storage().reference()
+    
     var burgerJoint = MKMapItem()
     var burgers = [String]()
+    var picturePath = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,24 +36,58 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         setupPicker()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destVC = segue.destination as! CameraVC
+        destVC.cameraDelegate = self
+    }
 
+    //MARK: - Buttons
+    
     @IBAction func publishPressed(_ sender: UIButton) {
         
-        guard let name = auth.currentUser?.displayName else {
+        guard let data = burgerImageView.image?.jpegData(compressionQuality: 0.25) else {
+            print("something went wrong")
             return
         }
+        let id = UUID()
+        let ref = storage.child("burgerImages/\(id).jpeg")
         
-        let reviewData = ["user": name,
-                          "burgerName": burgerNameInput.text!,
-                          "description": descriptionInput.text!,
-                          "rating": starRatingView.rating,
-                          "image": false] as [String : Any]
-        
-        db.collection(burgerJoint.name!).addDocument(data: reviewData)
+        ref.putData(data, metadata: nil) { (metadata, error) in
+            print("Upload started")
+            ref.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    print(error.debugDescription)
+                    return
+                }
+                self.picturePath = downloadURL.absoluteString
+                
+                guard let name = self.auth.currentUser?.displayName else {
+                    return
+                }
+                
+                let reviewData = ["user": name,
+                                  "burgerName": self.burgerNameInput.text!,
+                                  "description": self.descriptionInput.text!,
+                                  "rating": self.starRatingView.rating,
+                                  "image": self.picturePath] as [String : Any]
+                self.db.collection(self.burgerJoint.name!).addDocument(data: reviewData)
+            }
+        }
     }
     
     @IBAction func cancelPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: - Camera
+    
+    @IBAction func startCamera(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "goToCamera", sender: nil)
+    }
+    
+    func didTakePicture(image: UIImage) {
+        burgerImageView.image = image
     }
     
     //MARK: - PickerView

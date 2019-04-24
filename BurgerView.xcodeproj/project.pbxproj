@@ -22,6 +22,7 @@
 		745B5C06226F86E800A05E0F /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745B5C05226F86E800A05E0F /* Review.swift */; };
 		745B5C08227059F900A05E0F /* CreateReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745B5C07227059F900A05E0F /* CreateReviewVC.swift */; };
 		745B5C0A22705DF400A05E0F /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745B5C0922705DF400A05E0F /* CosmosDistrib.swift */; };
+		745B5C0C2270A9F400A05E0F /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745B5C0B2270A9F400A05E0F /* CameraVC.swift */; };
 		74970010226DE1F100841C81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7497000F226DE1F100841C81 /* AppDelegate.swift */; };
 		74970018226DE1F100841C81 /* BurgerView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 74970016226DE1F100841C81 /* BurgerView.xcdatamodeld */; };
 		7497001A226DE1F700841C81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74970019226DE1F700841C81 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 		745B5C05226F86E800A05E0F /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		745B5C07227059F900A05E0F /* CreateReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReviewVC.swift; sourceTree = "<group>"; };
 		745B5C0922705DF400A05E0F /* CosmosDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
+		745B5C0B2270A9F400A05E0F /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
 		7497000C226DE1F100841C81 /* BurgerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BurgerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7497000F226DE1F100841C81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74970017226DE1F100841C81 /* BurgerView.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BurgerView.xcdatamodel; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				74151007226DEB4700604029 /* CreatePasswordVC.swift */,
+				745B5C0B2270A9F400A05E0F /* CameraVC.swift */,
 				74151001226DEB2000604029 /* CreateEmailVC.swift */,
 				74150FFF226DEB1D00604029 /* CreateNameVC.swift */,
 				745B5C03226F3D6300A05E0F /* ReviewsVC.swift */,
@@ -253,6 +256,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BurgerView/Pods-BurgerView-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/CameraManager/CameraManager.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
@@ -267,6 +271,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CameraManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
@@ -295,6 +300,7 @@
 				74151003226DEB2300604029 /* CreateNameVC.swift in Sources */,
 				745B5C00226F235000A05E0F /* ProfileVC.swift in Sources */,
 				745B5C06226F86E800A05E0F /* Review.swift in Sources */,
+				745B5C0C2270A9F400A05E0F /* CameraVC.swift in Sources */,
 				74151008226DEB4700604029 /* CreatePasswordVC.swift in Sources */,
 				745B5C04226F3D6300A05E0F /* ReviewsVC.swift in Sources */,
 				74151005226DEB2300604029 /* CreateEmailVC.swift in Sources */,
