@@ -16,6 +16,10 @@
 		74151008226DEB4700604029 /* CreatePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74151007226DEB4700604029 /* CreatePasswordVC.swift */; };
 		7415100A226DEB4B00604029 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74151009226DEB4B00604029 /* MapVC.swift */; };
 		7415100C226DEB5400604029 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7415100B226DEB5400604029 /* GoogleService-Info.plist */; };
+		745B5C00226F235000A05E0F /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745B5BFF226F235000A05E0F /* ProfileVC.swift */; };
+		745B5C02226F301A00A05E0F /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745B5C01226F301A00A05E0F /* ReviewCell.swift */; };
+		745B5C04226F3D6300A05E0F /* ReviewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745B5C03226F3D6300A05E0F /* ReviewsVC.swift */; };
+		745B5C06226F86E800A05E0F /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745B5C05226F86E800A05E0F /* Review.swift */; };
 		74970010226DE1F100841C81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7497000F226DE1F100841C81 /* AppDelegate.swift */; };
 		74970018226DE1F100841C81 /* BurgerView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 74970016226DE1F100841C81 /* BurgerView.xcdatamodeld */; };
 		7497001A226DE1F700841C81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74970019226DE1F700841C81 /* Assets.xcassets */; };
@@ -32,6 +36,10 @@
 		74151007226DEB4700604029 /* CreatePasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePasswordVC.swift; sourceTree = "<group>"; };
 		74151009226DEB4B00604029 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		7415100B226DEB5400604029 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		745B5BFF226F235000A05E0F /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		745B5C01226F301A00A05E0F /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		745B5C03226F3D6300A05E0F /* ReviewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsVC.swift; sourceTree = "<group>"; };
+		745B5C05226F86E800A05E0F /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		7497000C226DE1F100841C81 /* BurgerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BurgerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7497000F226DE1F100841C81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74970017226DE1F100841C81 /* BurgerView.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BurgerView.xcdatamodel; sourceTree = "<group>"; };
@@ -92,8 +100,10 @@
 				74151007226DEB4700604029 /* CreatePasswordVC.swift */,
 				74151001226DEB2000604029 /* CreateEmailVC.swift */,
 				74150FFF226DEB1D00604029 /* CreateNameVC.swift */,
+				745B5C03226F3D6300A05E0F /* ReviewsVC.swift */,
 				74151000226DEB1F00604029 /* LoginVC.swift */,
 				74151002226DEB2300604029 /* OnboardingVC.swift */,
+				745B5BFF226F235000A05E0F /* ProfileVC.swift */,
 				74151009226DEB4B00604029 /* MapVC.swift */,
 				7415100B226DEB5400604029 /* GoogleService-Info.plist */,
 			);
@@ -103,6 +113,8 @@
 		74970025226DE24900841C81 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				745B5C01226F301A00A05E0F /* ReviewCell.swift */,
+				745B5C05226F86E800A05E0F /* Review.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -271,9 +283,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				74970018226DE1F100841C81 /* BurgerView.xcdatamodeld in Sources */,
+				745B5C02226F301A00A05E0F /* ReviewCell.swift in Sources */,
 				74151006226DEB2300604029 /* OnboardingVC.swift in Sources */,
 				74151003226DEB2300604029 /* CreateNameVC.swift in Sources */,
+				745B5C00226F235000A05E0F /* ProfileVC.swift in Sources */,
+				745B5C06226F86E800A05E0F /* Review.swift in Sources */,
 				74151008226DEB4700604029 /* CreatePasswordVC.swift in Sources */,
+				745B5C04226F3D6300A05E0F /* ReviewsVC.swift in Sources */,
 				74151005226DEB2300604029 /* CreateEmailVC.swift in Sources */,
 				7415100A226DEB4B00604029 /* MapVC.swift in Sources */,
 				74151004226DEB2300604029 /* LoginVC.swift in Sources */,

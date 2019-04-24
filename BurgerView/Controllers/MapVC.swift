@@ -17,12 +17,17 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var updateButton: UIButton!
+    
+    //Animated view
     @IBOutlet weak var infoView: UIView!
+    @IBOutlet weak var burgerImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
     
     
     let locationManager = CLLocationManager()
     private var currentCoordinate = CLLocationCoordinate2D()
     var burgerItems = [MKMapItem]()
+    var selectedBurgerItem = MKMapItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +41,19 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         hideView()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToReviews" {
+            let destVC = segue.destination as! ReviewsVC
+            destVC.burgerItem = selectedBurgerItem
+        }
+    }
+    
     func hideView() {
         UIView.animate(withDuration: 0.3) {
             self.profileButton.layer.position.y += 128
             self.locationButton.layer.position.y += 128
             self.updateButton.layer.position.y += 128
             self.infoView.layer.position.y += self.infoView.frame.height + 20
-            print(self.infoView.layer.position.y)
-
         }
     }
     
@@ -53,7 +63,6 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             self.locationButton.layer.position.y -= 128
             self.updateButton.layer.position.y -= 128
             self.infoView.layer.position.y -= self.infoView.frame.height + 20
-            print(self.infoView.layer.position.y)
         }
     }
     
@@ -79,6 +88,8 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         mapView.setRegion(region, animated: true)
     }
     
+    //MARK: - Buttons
+    
     @IBAction func logOutPressed(_ sender: UIButton) {
         do {
             try Auth.auth().signOut()
@@ -87,14 +98,22 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             print ("Error signing out: \(error)")
         }
     }
-    @IBAction func profilePressed(_ sender: UIButton) {
-    }
+    
     @IBAction func myLocationPressed(_ sender: UIButton) {
-    }
-    @IBAction func updatePressed(_ sender: UIButton) {
+        centerMapOnLocation(with: currentCoordinate)
+        findBurgerSpots()
     }
     
-    // Search
+    @IBAction func updatePressed(_ sender: UIButton) {
+        findBurgerSpots()
+    }
+    
+    @IBAction func navigatePressed(_ sender: UIButton) {
+        selectedBurgerItem.openInMaps(launchOptions: nil)
+    }
+    
+    //MARK: - Search
+    
     func findBurgerSpots() {
         mapView.removeAnnotations(mapView.annotations)
         burgerItems.removeAll()
@@ -159,6 +178,13 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         print("The annotation was selected: \(String(describing: view.annotation?.title))")
         centerMapOnLocation(with: view.annotation!.coordinate)
+        nameLabel.text = view.annotation?.title as? String
+        
+        //TODO: insert image from database
+        
+        let placemark = MKPlacemark(coordinate: view.annotation!.coordinate)
+        selectedBurgerItem = MKMapItem(placemark: placemark)
+        selectedBurgerItem.name = view.annotation?.title as? String
         showView()
     }
     
