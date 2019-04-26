@@ -10,6 +10,7 @@ import Foundation
 
 class Review {
     var user = ""
+    var burgerJointName = ""
     var burgerName = ""
     var description = ""
     var rating = 0.0
@@ -18,6 +19,9 @@ class Review {
     init(data:[String:Any]) {
         if let user = data["user"] as? String {
             self.user = user
+        }
+        if let burgerJointName = data["burgerJointName"] as? String {
+            self.burgerJointName = burgerJointName
         }
         if let burgerName = data["burgerName"] as? String {
             self.burgerName = burgerName
@@ -36,6 +40,7 @@ class Review {
     func data() -> [String:Any] {
         var data = [String:Any]()
         data["user"] = user
+        data["burgerJointName"] = burgerJointName
         data["burgerName"] = burgerName
         data["description"] = description
         data["rating"] = rating

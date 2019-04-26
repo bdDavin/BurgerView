@@ -28,6 +28,7 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     private var currentCoordinate = CLLocationCoordinate2D()
     var burgerItems = [MKMapItem]()
     var selectedBurgerItem = MKMapItem()
+    var selectedAnno: MKAnnotation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,11 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        hideView()
+        if selectedAnno == nil {
+            hideView()
+        } else {
+            mapView.deselectAnnotation(selectedAnno, animated: true)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -184,6 +189,7 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         
         let placemark = MKPlacemark(coordinate: view.annotation!.coordinate)
         selectedBurgerItem = MKMapItem(placemark: placemark)
+        selectedAnno = view.annotation!
         selectedBurgerItem.name = view.annotation?.title as? String
         showView()
     }

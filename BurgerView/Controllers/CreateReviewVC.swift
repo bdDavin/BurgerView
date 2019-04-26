@@ -72,11 +72,12 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     }
                     //Put the review info in a dictionary adn writes it to Firestore database
                     let reviewData = ["user": name,
+                                      "burgerJointName": self.burgerJoint.name!,
                                       "burgerName": self.burgerNameInput.text!,
                                       "description": self.descriptionInput.text!,
                                       "rating": self.starRatingView.rating,
                                       "imagePath": self.picturePath] as [String : Any]
-                    self.db.collection(self.burgerJoint.name!).addDocument(data: reviewData)
+                    self.db.collection("Reviews").addDocument(data: reviewData)
                 }
             }
             task.observe(.success) { (snapshot) in
@@ -88,11 +89,12 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 return
             }
             let reviewData = ["user": name,
+                              "burgerJointName": self.burgerJoint.name!,
                               "burgerName": self.burgerNameInput.text!,
                               "description": self.descriptionInput.text!,
                               "rating": self.starRatingView.rating,
                               "imagePath": self.picturePath] as [String : Any]
-            db.collection(self.burgerJoint.name!).addDocument(data: reviewData)
+            db.collection("Reviews").addDocument(data: reviewData)
         }
     }
     
@@ -117,7 +119,7 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         burgerPickerView.delegate = self
         burgerPickerView.dataSource = self
         
-        db.collection(burgerJoint.name!).getDocuments { (snapshot, error) in
+        db.collection("Reviews").getDocuments { (snapshot, error) in
             if let err = error {
                 print("Error getting documents: \(err)")
             } else {

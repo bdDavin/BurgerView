@@ -22,7 +22,6 @@ class ReviewsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
     var burgerItem = MKMapItem()
     var menuItems = [String]()
     var reviews = [Review]()
-    var selectedFilter = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +52,7 @@ class ReviewsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
     //MARK: - Data
     
     func getDataFor(burger: String) {
-        db.collection(burgerItem.name!).addSnapshotListener { (snapshot, error) in
+        db.collection("Reviews").whereField("burgerJointName", isEqualTo: burgerItem.name!).addSnapshotListener { (snapshot, error) in
             if let err = error {
                 print("Error getting documents: \(err)")
             } else {
