@@ -26,6 +26,7 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     var burgerJoint = MKMapItem()
     var burgers = [String]()
     var picturePath = ""
+    var didTakePicture = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,33 +47,52 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     @IBAction func publishPressed(_ sender: UIButton) {
         
-        guard let data = burgerImageView.image?.jpegData(compressionQuality: 0.25) else {
-            print("something went wrong")
-            return
-        }
-        let id = UUID()
-        let ref = storage.child("burgerImages/\(id).jpeg")
-        
-        ref.putData(data, metadata: nil) { (metadata, error) in
-            print("Upload started")
-            ref.downloadURL { (url, error) in
-                guard let downloadURL = url else {
-                    print(error.debugDescription)
-                    return
-                }
-                self.picturePath = downloadURL.absoluteString
-                
-                guard let name = self.auth.currentUser?.displayName else {
-                    return
-                }
-                
-                let reviewData = ["user": name,
-                                  "burgerName": self.burgerNameInput.text!,
-                                  "description": self.descriptionInput.text!,
-                                  "rating": self.starRatingView.rating,
-                                  "image": self.picturePath] as [String : Any]
-                self.db.collection(self.burgerJoint.name!).addDocument(data: reviewData)
+        if didTakePicture {
+            //kompresses data
+            guard let data = burgerImageView.image?.jpegData(compressionQuality: 0.25) else {
+                print("something went wrong")
+                return
             }
+            //gets a unique id
+            let id = UUID()
+            let ref = storage.child("burgerImages/\(id).jpeg")
+            //Uploads the data to firbase storage
+            self.showSpinner(onView: view)
+            let task = ref.putData(data, metadata: nil) { (metadata, error) in
+                print("Upload started")
+                ref.downloadURL { (url, error) in
+                    guard let downloadURL = url else {
+                        print(error.debugDescription)
+                        return
+                    }
+                    self.picturePath = downloadURL.absoluteString
+                    
+                    guard let name = self.auth.currentUser?.displayName else {
+                        return
+                    }
+                    //Put the review info in a dictionary adn writes it to Firestore database
+                    let reviewData = ["user": name,
+                                      "burgerName": self.burgerNameInput.text!,
+                                      "description": self.descriptionInput.text!,
+                                      "rating": self.starRatingView.rating,
+                                      "imagePath": self.picturePath] as [String : Any]
+                    self.db.collection(self.burgerJoint.name!).addDocument(data: reviewData)
+                }
+            }
+            task.observe(.success) { (snapshot) in
+                self.removeSpinner()
+                self.dismiss(animated: true, completion: nil)
+            }
+        }else {
+            guard let name = self.auth.currentUser?.displayName else {
+                return
+            }
+            let reviewData = ["user": name,
+                              "burgerName": self.burgerNameInput.text!,
+                              "description": self.descriptionInput.text!,
+                              "rating": self.starRatingView.rating,
+                              "imagePath": self.picturePath] as [String : Any]
+            db.collection(self.burgerJoint.name!).addDocument(data: reviewData)
         }
     }
     
@@ -87,6 +107,7 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func didTakePicture(image: UIImage) {
+        didTakePicture = true
         burgerImageView.image = image
     }
     
@@ -108,6 +129,7 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                         self.burgers.append(review.burgerName)
                     }
                 }
+                self.burgers.sort()
             }
             self.burgerPickerView.reloadAllComponents()
         }

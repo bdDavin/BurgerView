@@ -1,20 +1,16 @@
 //
-//  ReviewCell.swift
+//  AvgRatingCell.swift
 //  BurgerView
 //
-//  Created by Ben Davin on 2019-04-23.
+//  Created by Ben Davin on 2019-04-25.
 //  Copyright © 2019 Ben Davin. All rights reserved.
 //
 
 import UIKit
 
-class ReviewCell: UITableViewCell {
-    
-    @IBOutlet weak var burgerNameLabel: UILabel!
-    @IBOutlet weak var burgerImageView: UIImageView!
-    @IBOutlet weak var reviewedByLabel: UILabel!
-    @IBOutlet weak var descLabel: UILabel!
-    @IBOutlet weak var ratingView: CosmosView!
+class TotalReviewsCell: UITableViewCell {
+
+    @IBOutlet weak var totalReviewsLAbel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

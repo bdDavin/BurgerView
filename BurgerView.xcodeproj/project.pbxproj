@@ -27,6 +27,7 @@
 		74970018226DE1F100841C81 /* BurgerView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 74970016226DE1F100841C81 /* BurgerView.xcdatamodeld */; };
 		7497001A226DE1F700841C81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74970019226DE1F700841C81 /* Assets.xcassets */; };
 		7497001D226DE1F700841C81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7497001B226DE1F700841C81 /* LaunchScreen.storyboard */; };
+		74BAEEFE2271990200894C9B /* TotalReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BAEEFD2271990200894C9B /* TotalReviewsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		74970019226DE1F700841C81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7497001C226DE1F700841C81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7497001E226DE1F700841C81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74BAEEFD2271990200894C9B /* TotalReviewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalReviewsCell.swift; sourceTree = "<group>"; };
 		9F803B1E0C62CBBDD1810EE0 /* Pods-BurgerView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurgerView.release.xcconfig"; path = "Target Support Files/Pods-BurgerView/Pods-BurgerView.release.xcconfig"; sourceTree = "<group>"; };
 		EB4A69E8ECF2C875F13A50CF /* Pods-BurgerView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BurgerView.debug.xcconfig"; path = "Target Support Files/Pods-BurgerView/Pods-BurgerView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +126,7 @@
 			children = (
 				745B5C01226F301A00A05E0F /* ReviewCell.swift */,
 				745B5C05226F86E800A05E0F /* Review.swift */,
+				74BAEEFD2271990200894C9B /* TotalReviewsCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				745B5C08227059F900A05E0F /* CreateReviewVC.swift in Sources */,
+				74BAEEFE2271990200894C9B /* TotalReviewsCell.swift in Sources */,
 				74970018226DE1F100841C81 /* BurgerView.xcdatamodeld in Sources */,
 				745B5C02226F301A00A05E0F /* ReviewCell.swift in Sources */,
 				74151006226DEB2300604029 /* OnboardingVC.swift in Sources */,

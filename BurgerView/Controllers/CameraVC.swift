@@ -19,6 +19,7 @@ class CameraVC: UIViewController {
     let camera = CameraManager()
     var myImage = UIImage()
 
+    @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var captureButton: UIButton!
     @IBOutlet weak var rotateButton: UIButton!
@@ -27,13 +28,10 @@ class CameraVC: UIViewController {
         super.viewDidLoad()
 
         //Setup
-        camera.addPreviewLayerToView(view)
+        camera.addPreviewLayerToView(cameraView)
         camera.cameraDevice = .back
         camera.writeFilesToPhoneLibrary = false
         
-        view.bringSubviewToFront(backButton)
-        view.bringSubviewToFront(captureButton)
-        view.bringSubviewToFront(rotateButton)
     }
     
     @IBAction func rotatePressed(_ sender: UIButton) {

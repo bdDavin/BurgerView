@@ -12,7 +12,7 @@ class Review {
     var user = ""
     var burgerName = ""
     var description = ""
-    var rating = 0
+    var rating = 0.0
     var imagePath = ""
     
     init(data:[String:Any]) {
@@ -25,7 +25,7 @@ class Review {
         if let description = data["description"] as? String {
             self.description = description
         }
-        if let rating = data["rating"] as? Int {
+        if let rating = data["rating"] as? Double {
             self.rating = rating
         }
         if let imagePath = data["imagePath"] as? String {
@@ -39,7 +39,7 @@ class Review {
         data["burgerName"] = burgerName
         data["description"] = description
         data["rating"] = rating
-        data["image"] = rating
+        data["imagePath"] = imagePath
         return data
     }
     
