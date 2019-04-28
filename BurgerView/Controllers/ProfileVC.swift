@@ -32,11 +32,19 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         reviewsTableView.delegate = self
         reviewsTableView.dataSource = self
         
+        reviewsTableView.separatorStyle = .none
+        
         showSpinner(onView: view)
         getDataFor(burgerJoint: "")
     }
     
     @IBAction func logOutPressed(_ sender: UIButton) {
+        do {
+            try Auth.auth().signOut()
+            view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        } catch let error {
+            print ("Error signing out: \(error)")
+        }
     }
     @IBAction func backPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)

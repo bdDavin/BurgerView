@@ -11,7 +11,7 @@ import Firebase
 import MapKit
 import CameraManager
 
-class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, CameraDelegate {
+class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, CameraDelegate {
     
     @IBOutlet weak var burgerPickerView: UIPickerView!
     @IBOutlet weak var burgerImageView: UIImageView!
@@ -32,15 +32,35 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         super.viewDidLoad()
 
         //setup
+        descriptionInput.delegate = self
+        descriptionInput.text = "Descibe the taste"
+        descriptionInput.textColor = UIColor.lightGray
+        
         starRatingView.settings.fillMode = .half
         starRatingView.rating = 0
-        
+                
         setupPicker()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destVC = segue.destination as! CameraVC
         destVC.cameraDelegate = self
+    }
+    
+    //MARK: - TextView
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if descriptionInput.textColor == UIColor.lightGray {
+            descriptionInput.text = nil
+            descriptionInput.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if descriptionInput.text.isEmpty {
+            descriptionInput.text = "Descibe the taste"
+            descriptionInput.textColor = UIColor.lightGray
+        }
     }
 
     //MARK: - Buttons

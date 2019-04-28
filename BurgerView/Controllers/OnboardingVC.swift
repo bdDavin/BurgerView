@@ -35,9 +35,71 @@ class OnboardingVC: UIViewController, UIScrollViewDelegate {
     
 }
 
-var spinner : UIView?
+class IconButton: UIButton {
+    override func didMoveToWindow() {
+        self.layer.cornerRadius = 10
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 1, height: 5)
+        self.layer.shadowRadius = 3
+        self.layer.shadowOpacity = 0.3
+    }
+}
 
+class PressButton: UIButton {
+    override func didMoveToWindow() {
+        self.layer.cornerRadius = layer.frame.height / 2
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 1, height: 5)
+        self.layer.shadowRadius = 3
+        self.layer.shadowOpacity = 0.3
+        self.backgroundColor = #colorLiteral(red: 0.3803921569, green: 0.4352941176, blue: 0.2235294118, alpha: 1)
+        self.setTitleColor(#colorLiteral(red: 1, green: 0.8509803922, blue: 0.5568627451, alpha: 1), for: .normal)
+    }
+}
+
+class CustomPicker: UIPickerView {
+    override func didMoveToWindow() {
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 1, height: 5)
+        self.layer.shadowRadius = 3
+        self.layer.shadowOpacity = 0.3
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.bounds
+        gradientLayer.colors = [#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor, #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.75).cgColor]
+
+        //self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+}
+class TopView: UIView {
+    override func didMoveToWindow() {
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 1, height: 5)
+        self.layer.shadowRadius = 3
+        self.layer.shadowOpacity = 0.3
+    }
+}
+
+class CellView: UIView {
+    override func didMoveToWindow() {
+        self.layer.cornerRadius = 10
+        self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 1, height: 5)
+        self.layer.shadowRadius = 3
+        self.layer.shadowOpacity = 0.3
+    }
+}
+
+class RoundedImageView: UIImageView {
+    override func didMoveToWindow() {
+        self.layer.cornerRadius = 10
+    }
+}
+//Spinner
+var spinner : UIView?
 extension UIViewController {
+    
     func showSpinner(onView : UIView) {
         let spinnerView = UIView.init(frame: onView.bounds)
         spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)

@@ -33,6 +33,8 @@ class ReviewsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         reviewsTableView.delegate = self
         reviewsTableView.dataSource = self
         
+        reviewsTableView.separatorStyle = .none
+        
         showSpinner(onView: view)
     }
     

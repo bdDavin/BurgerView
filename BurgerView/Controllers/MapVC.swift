@@ -23,10 +23,12 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     @IBOutlet weak var burgerImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    
+    let db = Firestore.firestore()
+    let storage = Storage.storage()
     let locationManager = CLLocationManager()
     private var currentCoordinate = CLLocationCoordinate2D()
     var burgerItems = [MKMapItem]()
+    var reviews = [Review]()
     var selectedBurgerItem = MKMapItem()
     var selectedAnno: MKAnnotation?
     
@@ -55,19 +57,19 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     func hideView() {
         UIView.animate(withDuration: 0.3) {
-            self.profileButton.layer.position.y += 128
-            self.locationButton.layer.position.y += 128
-            self.updateButton.layer.position.y += 128
-            self.infoView.layer.position.y += self.infoView.frame.height + 20
+            self.profileButton.layer.position.y += 118
+            self.locationButton.layer.position.y += 118
+            self.updateButton.layer.position.y += 118
+            self.infoView.layer.position.y += self.infoView.frame.height - 20
         }
     }
     
     func showView() {
         UIView.animate(withDuration: 0.3) {
-            self.profileButton.layer.position.y -= 128
-            self.locationButton.layer.position.y -= 128
-            self.updateButton.layer.position.y -= 128
-            self.infoView.layer.position.y -= self.infoView.frame.height + 20
+            self.profileButton.layer.position.y -= 118
+            self.locationButton.layer.position.y -= 118
+            self.updateButton.layer.position.y -= 118
+            self.infoView.layer.position.y -= self.infoView.frame.height - 20
         }
     }
     
@@ -95,15 +97,6 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     //MARK: - Buttons
     
-    @IBAction func logOutPressed(_ sender: UIButton) {
-        do {
-            try Auth.auth().signOut()
-            view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-        } catch let error {
-            print ("Error signing out: \(error)")
-        }
-    }
-    
     @IBAction func myLocationPressed(_ sender: UIButton) {
         centerMapOnLocation(with: currentCoordinate)
         findBurgerSpots()
@@ -115,6 +108,22 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBAction func navigatePressed(_ sender: UIButton) {
         selectedBurgerItem.openInMaps(launchOptions: nil)
+    }
+    
+    //MARK: - Data
+    
+    func getData() {
+        db.collection("Reviews").whereField("burgerJointName", isEqualTo: selectedBurgerItem.name as Any).getDocuments { (snapshot, error) in
+            if let err = error {
+                print(err.localizedDescription)
+            }else {
+                for documents in snapshot!.documents {
+                    let data = documents.data()
+                    let review = Review(data: data)
+                    self.reviews.append(review)
+                }
+            }
+        }
     }
     
     //MARK: - Search
@@ -183,10 +192,11 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         print("The annotation was selected: \(String(describing: view.annotation?.title))")
         centerMapOnLocation(with: view.annotation!.coordinate)
-        nameLabel.text = view.annotation?.title as? String
-        
+        let name = view.annotation?.title as? String
+        nameLabel.text = name
+        getData()
         //TODO: insert image from database
-        
+
         let placemark = MKPlacemark(coordinate: view.annotation!.coordinate)
         selectedBurgerItem = MKMapItem(placemark: placemark)
         selectedAnno = view.annotation!
@@ -212,6 +222,8 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
                 view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             }
             view.displayPriority = .required
+            view.glyphTintColor = #colorLiteral(red: 1, green: 0.8509803922, blue: 0.5568627451, alpha: 1)
+            view.markerTintColor = #colorLiteral(red: 0.3803921569, green: 0.4352941176, blue: 0.2235294118, alpha: 1)
             view.glyphImage = UIImage(named: "burger-30")
             view.selectedGlyphImage = UIImage(named: "burger-60")
             return view
