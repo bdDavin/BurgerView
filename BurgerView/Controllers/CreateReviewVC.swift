@@ -11,7 +11,7 @@ import Firebase
 import MapKit
 import CameraManager
 
-class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, CameraDelegate {
+class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, ImagePickerDelegate {
     
     @IBOutlet weak var burgerPickerView: UIPickerView!
     @IBOutlet weak var burgerImageView: UIImageView!
@@ -38,13 +38,10 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         starRatingView.settings.fillMode = .half
         starRatingView.rating = 0
+        
+        imagePicker = ImagePicker(presentationController: self, delegate: self)
                 
         setupPicker()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destVC = segue.destination as! CameraVC
-        destVC.cameraDelegate = self
     }
     
     //MARK: - TextView
@@ -67,6 +64,7 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     @IBAction func publishPressed(_ sender: UIButton) {
         
+        self.showSpinner(onView: view)
         if didTakePicture {
             //kompresses data
             guard let data = burgerImageView.image?.jpegData(compressionQuality: 0.25) else {
@@ -77,7 +75,6 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             let id = UUID()
             let ref = storage.child("burgerImages/\(id).jpeg")
             //Uploads the data to firbase storage
-            self.showSpinner(onView: view)
             let task = ref.putData(data, metadata: nil) { (metadata, error) in
                 print("Upload started")
                 ref.downloadURL { (url, error) in
@@ -114,7 +111,14 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                               "description": self.descriptionInput.text!,
                               "rating": self.starRatingView.rating,
                               "imagePath": self.picturePath] as [String : Any]
-            db.collection("Reviews").addDocument(data: reviewData)
+            self.db.collection("Reviews").addDocument(data: reviewData, completion: { (err) in
+                if let err = err {
+                    print(err.localizedDescription)
+                }else {
+                }
+                self.removeSpinner()
+                self.dismiss(animated: true, completion: nil)
+            })
         }
     }
     
@@ -124,13 +128,18 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     //MARK: - Camera
     
-    @IBAction func startCamera(_ sender: UITapGestureRecognizer) {
-        performSegue(withIdentifier: "goToCamera", sender: nil)
+    var imagePicker: ImagePicker!
+    
+    func didSelect(image: UIImage?) {
+        didTakePicture = true
+        guard let nonNilImage = image else {
+            return
+        }
+        burgerImageView.image = nonNilImage
     }
     
-    func didTakePicture(image: UIImage) {
-        didTakePicture = true
-        burgerImageView.image = image
+    @IBAction func showImagePicker(_ sender: UIButton) {
+        self.imagePicker.present(from: sender)
     }
     
     //MARK: - PickerView
