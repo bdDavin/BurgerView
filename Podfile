@@ -12,6 +12,5 @@ target 'BurgerView' do
 
   pod 'StarReview'
   pod 'CameraManager'
-  pod 'LoginTextField'
 
 end

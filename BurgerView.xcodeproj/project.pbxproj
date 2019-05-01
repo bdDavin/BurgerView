@@ -13,10 +13,10 @@
 		74151004226DEB2300604029 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74151000226DEB1F00604029 /* LoginVC.swift */; };
 		74151005226DEB2300604029 /* CreateEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74151001226DEB2000604029 /* CreateEmailVC.swift */; };
 		74151006226DEB2300604029 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74151002226DEB2300604029 /* OnboardingVC.swift */; };
-		74151008226DEB4700604029 /* CreatePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74151007226DEB4700604029 /* CreatePasswordVC.swift */; };
 		7415100A226DEB4B00604029 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74151009226DEB4B00604029 /* MapVC.swift */; };
 		7415100C226DEB5400604029 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7415100B226DEB5400604029 /* GoogleService-Info.plist */; };
 		7423D5CD2275A22D00D76EB6 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7423D5CC2275A22D00D76EB6 /* ImagePicker.swift */; };
+		7423D5D1227649AF00D76EB6 /* KeyboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7423D5D0227649AE00D76EB6 /* KeyboardHelper.swift */; };
 		745B5C00226F235000A05E0F /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745B5BFF226F235000A05E0F /* ProfileVC.swift */; };
 		745B5C02226F301A00A05E0F /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745B5C01226F301A00A05E0F /* ReviewCell.swift */; };
 		745B5C04226F3D6300A05E0F /* ReviewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745B5C03226F3D6300A05E0F /* ReviewsVC.swift */; };
@@ -38,10 +38,10 @@
 		74151000226DEB1F00604029 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		74151001226DEB2000604029 /* CreateEmailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEmailVC.swift; sourceTree = "<group>"; };
 		74151002226DEB2300604029 /* OnboardingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
-		74151007226DEB4700604029 /* CreatePasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePasswordVC.swift; sourceTree = "<group>"; };
 		74151009226DEB4B00604029 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
-		7415100B226DEB5400604029 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7415100B226DEB5400604029 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Controllers/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7423D5CC2275A22D00D76EB6 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		7423D5D0227649AE00D76EB6 /* KeyboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHelper.swift; sourceTree = "<group>"; };
 		745B5BFF226F235000A05E0F /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		745B5C01226F301A00A05E0F /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		745B5C03226F3D6300A05E0F /* ReviewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsVC.swift; sourceTree = "<group>"; };
@@ -97,6 +97,8 @@
 				74970025226DE24900841C81 /* Models */,
 				74970024226DE23900841C81 /* Controllers */,
 				7497000F226DE1F100841C81 /* AppDelegate.swift */,
+				7415100B226DEB5400604029 /* GoogleService-Info.plist */,
+				7423D5D0227649AE00D76EB6 /* KeyboardHelper.swift */,
 				7423D5CC2275A22D00D76EB6 /* ImagePicker.swift */,
 				74970019226DE1F700841C81 /* Assets.xcassets */,
 				745B5C0922705DF400A05E0F /* CosmosDistrib.swift */,
@@ -109,7 +111,6 @@
 		74970024226DE23900841C81 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				74151007226DEB4700604029 /* CreatePasswordVC.swift */,
 				74151001226DEB2000604029 /* CreateEmailVC.swift */,
 				74150FFF226DEB1D00604029 /* CreateNameVC.swift */,
 				745B5C03226F3D6300A05E0F /* ReviewsVC.swift */,
@@ -117,7 +118,6 @@
 				74151002226DEB2300604029 /* OnboardingVC.swift */,
 				745B5BFF226F235000A05E0F /* ProfileVC.swift */,
 				74151009226DEB4B00604029 /* MapVC.swift */,
-				7415100B226DEB5400604029 /* GoogleService-Info.plist */,
 				745B5C07227059F900A05E0F /* CreateReviewVC.swift */,
 			);
 			path = Controllers;
@@ -265,7 +265,6 @@
 				"${BUILT_PRODUCTS_DIR}/CameraManager/CameraManager.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/LoginTextField/LoginTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/StarReview/StarReview.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
@@ -281,7 +280,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CameraManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LoginTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StarReview.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
@@ -307,11 +305,11 @@
 				7423D5CD2275A22D00D76EB6 /* ImagePicker.swift in Sources */,
 				745B5C02226F301A00A05E0F /* ReviewCell.swift in Sources */,
 				74151006226DEB2300604029 /* OnboardingVC.swift in Sources */,
+				7423D5D1227649AF00D76EB6 /* KeyboardHelper.swift in Sources */,
 				74151003226DEB2300604029 /* CreateNameVC.swift in Sources */,
 				745B5C00226F235000A05E0F /* ProfileVC.swift in Sources */,
 				74BAEF02227310F400894C9B /* UserReviewCell.swift in Sources */,
 				745B5C06226F86E800A05E0F /* Review.swift in Sources */,
-				74151008226DEB4700604029 /* CreatePasswordVC.swift in Sources */,
 				745B5C04226F3D6300A05E0F /* ReviewsVC.swift in Sources */,
 				74151005226DEB2300604029 /* CreateEmailVC.swift in Sources */,
 				7415100A226DEB4B00604029 /* MapVC.swift in Sources */,
@@ -466,7 +464,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = se.davin.ben.BurgerView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -485,7 +483,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = se.davin.ben.BurgerView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

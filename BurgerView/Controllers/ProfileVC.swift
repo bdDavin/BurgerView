@@ -15,16 +15,16 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     @IBOutlet weak var filterPickerView: UIPickerView!
     @IBOutlet weak var reviewsTableView: UITableView!
     
-    
     let db = Firestore.firestore()
     let storage = Storage.storage()
+    
     let name = Auth.auth().currentUser?.displayName!
     var reviews = [Review]()
     var menuItems = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //setup
         nameLabel.text = name
         
         filterPickerView.delegate = self
@@ -46,13 +46,14 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             print ("Error signing out: \(error)")
         }
     }
+    
     @IBAction func backPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     //MARK: - Data
     
     func getDataFor(burgerJoint: String) {
-        db.collection("Reviews").whereField("user", isEqualTo: name!).getDocuments { (snapshot, error) in
+        db.collection("Reviews").whereField("user", isEqualTo: name!).order(by: "created", descending: true).getDocuments { (snapshot, error) in
             if let err = error {
                 print("Error getting documents: \(err)")
             } else {
@@ -126,7 +127,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             let review = reviews[indexPath.row - 1]
             cell.burgerJointNameLabel.text = review.burgerJointName
             cell.burgerNameLabel.text = review.burgerName
-            //Getting images
+            //Getting image if it exists
             if review.imagePath != "" {
                 let ref = storage.reference(forURL: review.imagePath)
                 ref.getData(maxSize: 1 * 1024 * 1024) { data, error in

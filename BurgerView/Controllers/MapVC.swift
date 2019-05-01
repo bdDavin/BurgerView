@@ -26,7 +26,8 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     let db = Firestore.firestore()
     let storage = Storage.storage()
     let locationManager = CLLocationManager()
-    private var currentCoordinate = CLLocationCoordinate2D()
+    
+    var currentCoordinate = CLLocationCoordinate2D()
     var burgerItems = [MKMapItem]()
     var reviews = [Review]()
     var selectedBurgerItem = MKMapItem()
@@ -34,9 +35,6 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mapView.delegate = self
-
         configureLocationService()
     }
     
@@ -54,7 +52,7 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             destVC.burgerItem = selectedBurgerItem
         }
     }
-    
+    //Animations
     func hideView() {
         UIView.animate(withDuration: 0.3) {
             self.profileButton.layer.position.y += 118
@@ -72,9 +70,11 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             self.infoView.layer.position.y -= self.infoView.frame.height - 20
         }
     }
-    
+    //Asking for locations service if not enabled
     private func configureLocationService() {
+        mapView.delegate = self
         locationManager.delegate = self
+        
         let status = CLLocationManager.authorizationStatus()
         
         if status == .notDetermined {
@@ -83,13 +83,13 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             beginLocationUpdates(locationManager: locationManager)
         }
     }
-    
+    //Start looking for useer location
     private func beginLocationUpdates(locationManager: CLLocationManager) {
         mapView.showsUserLocation = false
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
     }
-    
+    //Func to center map
     private func centerMapOnLocation(with coordinate: CLLocationCoordinate2D) {
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 700, longitudinalMeters: 700)
         mapView.setRegion(region, animated: true)
@@ -195,7 +195,6 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         let name = view.annotation?.title as? String
         nameLabel.text = name
         getData()
-        //TODO: insert image from database
 
         let placemark = MKPlacemark(coordinate: view.annotation!.coordinate)
         selectedBurgerItem = MKMapItem(placemark: placemark)

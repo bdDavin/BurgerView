@@ -13,19 +13,24 @@ class OnboardingVC: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var onboardingScrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var imageView1: UIImageView!
+    @IBOutlet weak var imageView2: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         onboardingScrollView.delegate = self
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         //Checking logged in state
-        if Auth.auth().currentUser != nil {
-            performSegue(withIdentifier: "goToMap", sender: nil)
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if auth.currentUser != nil {
+                self.performSegue(withIdentifier: "goToMap", sender: nil)
+            }
         }
+        
     }
-    
+    //UIScrollViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print("ScrollView did scroll")
         let pageNumber = Int(round(scrollView.contentOffset.x/view.frame.size.width))
@@ -34,7 +39,7 @@ class OnboardingVC: UIViewController, UIScrollViewDelegate {
     
     
 }
-
+//Design classes
 class IconButton: UIButton {
     override func didMoveToWindow() {
         self.layer.cornerRadius = 10
@@ -83,7 +88,7 @@ class TopView: UIView {
 class CellView: UIView {
     override func didMoveToWindow() {
         self.layer.cornerRadius = 10
-        self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: 1, height: 5)
         self.layer.shadowRadius = 3
@@ -93,6 +98,8 @@ class CellView: UIView {
 
 class RoundedImageView: UIImageView {
     override func didMoveToWindow() {
+        self.layer.masksToBounds = true
+
         self.layer.cornerRadius = 10
     }
 }

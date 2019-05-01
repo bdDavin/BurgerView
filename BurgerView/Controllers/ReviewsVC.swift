@@ -54,7 +54,7 @@ class ReviewsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
     //MARK: - Data
     
     func getDataFor(burger: String) {
-        db.collection("Reviews").whereField("burgerJointName", isEqualTo: burgerItem.name!).addSnapshotListener { (snapshot, error) in
+        db.collection("Reviews").whereField("burgerJointName", isEqualTo: burgerItem.name!).order(by: "created", descending: true).addSnapshotListener { (snapshot, error) in
             if let err = error {
                 print("Error getting documents: \(err)")
             } else {
@@ -66,7 +66,7 @@ class ReviewsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
                         if review.burgerName == burger {
                             self.reviews.append(review)
                         }
-                    }else {
+                    } else {
                         self.reviews.append(review)
                         self.setupPicker()
                     }

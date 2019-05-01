@@ -11,7 +11,7 @@ import Firebase
 import MapKit
 import CameraManager
 
-class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, ImagePickerDelegate {
+class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UITextFieldDelegate, ImagePickerDelegate {
     
     @IBOutlet weak var burgerPickerView: UIPickerView!
     @IBOutlet weak var burgerImageView: UIImageView!
@@ -22,7 +22,8 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     let auth = Auth.auth()
     let db = Firestore.firestore()
     let storage = Storage.storage().reference()
-    
+    var imagePicker: ImagePicker!
+
     var burgerJoint = MKMapItem()
     var burgers = [String]()
     var picturePath = ""
@@ -32,11 +33,12 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         super.viewDidLoad()
 
         //setup
+        burgerNameInput.delegate = self
+        
         descriptionInput.delegate = self
         descriptionInput.text = "Descibe the taste"
         descriptionInput.textColor = UIColor.lightGray
         
-        starRatingView.settings.fillMode = .half
         starRatingView.rating = 0
         
         imagePicker = ImagePicker(presentationController: self, delegate: self)
@@ -44,7 +46,21 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         setupPicker()
     }
     
-    //MARK: - TextView
+    //MARK: - TextView/TextField
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("here")
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if descriptionInput.textColor == UIColor.lightGray {
@@ -93,7 +109,8 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                                       "burgerName": self.burgerNameInput.text!,
                                       "description": self.descriptionInput.text!,
                                       "rating": self.starRatingView.rating,
-                                      "imagePath": self.picturePath] as [String : Any]
+                                      "imagePath": self.picturePath,
+                                      "created": FieldValue.serverTimestamp()] as [String : Any]
                     self.db.collection("Reviews").addDocument(data: reviewData)
                 }
             }
@@ -110,7 +127,8 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                               "burgerName": self.burgerNameInput.text!,
                               "description": self.descriptionInput.text!,
                               "rating": self.starRatingView.rating,
-                              "imagePath": self.picturePath] as [String : Any]
+                              "imagePath": self.picturePath,
+                              "created": FieldValue.serverTimestamp()] as [String : Any]
             self.db.collection("Reviews").addDocument(data: reviewData, completion: { (err) in
                 if let err = err {
                     print(err.localizedDescription)
@@ -127,8 +145,6 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     //MARK: - Camera
-    
-    var imagePicker: ImagePicker!
     
     func didSelect(image: UIImage?) {
         didTakePicture = true
@@ -148,7 +164,7 @@ class CreateReviewVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         burgerPickerView.delegate = self
         burgerPickerView.dataSource = self
         
-        db.collection("Reviews").getDocuments { (snapshot, error) in
+        db.collection("Reviews").whereField("burgerJointName", isEqualTo: burgerJoint.name!).getDocuments { (snapshot, error) in
             if let err = error {
                 print("Error getting documents: \(err)")
             } else {
